@@ -14,7 +14,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void add() {
-        System.out.println("添加用户");
+    public void add(String string) {
+        System.out.println("添加用户"+string);
     }
 }

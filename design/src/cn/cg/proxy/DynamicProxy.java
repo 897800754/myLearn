@@ -25,26 +25,10 @@ public class DynamicProxy implements InvocationHandler {
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         System.out.println("----before----");
-        Object invoke = method.invoke(target, args);
+        Object res = method.invoke(target, args);
         System.out.println("----after----");
-        return invoke;
+        return res;
 
     }
 
-    public static void main(String[] args) {
-        //希望被代理的目标业务类
-        UserService target = new UserServiceImpl();
-        // //将目标类和横切类编织在一起
-        DynamicProxy handler = new DynamicProxy(target);
-        //创建代理实例，它可以看作是要代理的目标业务类的加多了横切代码(方法)的一个子类
-        //创建代理实例(使用Proxy类和自定义的调用处理逻辑(handler)来生成一个代理对象)
-        UserService proxy = (UserService) Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(), new InvocationHandler() {
-            @Override
-            public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-
-                return null;
-            }
-        });
-        proxy.add();
-    }
 }

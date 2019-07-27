@@ -9,5 +9,5 @@ package cn.cg.proxy;
  */
 public interface UserService {
      void get();
-     void add();
+     void add(String string);
 }
